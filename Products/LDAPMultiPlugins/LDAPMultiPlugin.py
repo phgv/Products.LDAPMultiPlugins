@@ -18,7 +18,7 @@ $Id$
 # General Python imports
 import logging
 import os
-from urllib import quote_plus
+from urllib.parse import quote_plus
 
 # Zope imports
 from Acquisition import aq_base
@@ -35,7 +35,7 @@ from Products.PluggableAuthService.interfaces.plugins import \
      IRoleEnumerationPlugin
 from Products.PluggableAuthService.utils import classImplements
 
-from LDAPPluginBase import LDAPPluginBase
+from .LDAPPluginBase import LDAPPluginBase
 
 logger = logging.getLogger('event.LDAPMultiPlugin')
 _dtmldir = os.path.join(package_home(globals()), 'dtml')
@@ -300,7 +300,7 @@ class LDAPMultiPlugin(LDAPPluginBase):
                 return (group_info,)
 
         if id is None and exact_match:
-            raise ValueError, 'Exact Match requested but no id provided'
+            raise ValueError('Exact Match requested but no id provided')
         elif id is not None:
             kw[self.groupid_attr] = id
 

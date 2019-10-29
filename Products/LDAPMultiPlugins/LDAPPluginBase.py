@@ -154,7 +154,7 @@ class LDAPPluginBase(Folder, BasePlugin, Cacheable):
     security.declarePrivate('_demangle')
     def _demangle(self, princid):
         # Sanity check
-        if not isinstance(princid, basestring):
+        if not isinstance(princid, str):
             return None
 
         # User must start with our prefix (which is likely to be blank anyway)

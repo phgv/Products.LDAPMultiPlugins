@@ -18,7 +18,7 @@ $Id$
 from ldap.filter import filter_format
 import logging
 import os
-from urllib import quote_plus
+from urllib.parse import quote_plus
 
 from Acquisition import aq_base
 from App.class_init import default__class_init__ as InitializeClass
@@ -34,7 +34,7 @@ from Products.PluggableAuthService.interfaces.plugins import \
      IRoleEnumerationPlugin
 from Products.PluggableAuthService.utils import classImplements
 
-from LDAPPluginBase import LDAPPluginBase
+from .LDAPPluginBase import LDAPPluginBase
 
 
 logger = logging.getLogger('event.LDAPMultiPlugin')
@@ -342,7 +342,7 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
                 ldap_user = acl.getUser(login)
             else:
                 msg = 'Exact Match specified but no ID or Login given'
-                raise ValueError, msg
+                raise ValueError(msg)
 
             if ldap_user is not None:
                 qs = 'user_dn=%s' % quote_plus(ldap_user.getUserDN())
@@ -436,7 +436,7 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
             return ()
 
         if id is None and exact_match != 0:
-            raise ValueError, 'Exact Match requested but no id provided'
+            raise ValueError('Exact Match requested but no id provided')
         elif id is None:
             id = ''
             
