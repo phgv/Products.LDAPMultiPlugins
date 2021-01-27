@@ -21,7 +21,7 @@ import os
 from urllib.parse import quote_plus
 
 from Acquisition import aq_base
-from App.class_init import default__class_init__ as InitializeClass
+from AccessControl.class_init import InitializeClass
 from App.Common import package_home
 from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
